@@ -670,5 +670,5 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>l <Plug>(easymotion-lineforward)
 
-map <leader>. <Plug>(easymotion-repeat)
-
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
