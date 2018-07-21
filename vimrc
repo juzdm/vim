@@ -39,7 +39,7 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 
 set laststatus=1    " 启动显示状态行(1),总是显示状态行(2)  
 
-set foldenable      " 允许折叠  
+"set foldenable      " 允许折叠  
 
 set foldmethod=manual   " 手动折叠  
 
@@ -299,7 +299,7 @@ set guioptions-=T           " 隐藏工具栏
 
 set guioptions-=m           " 隐藏菜单栏
 
-"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 
 " 设置在状态行显示的信息
 
@@ -479,21 +479,21 @@ au BufRead,BufNewFile *  setfiletype txt
 
 "自动补全
 
-:inoremap ( ()<ESC>i
-
-:inoremap ) <c-r>=ClosePair(')')<CR>
-
-:inoremap { {<CR>}<ESC>O
-
-:inoremap } <c-r>=ClosePair('}')<CR>
-
-:inoremap [ []<ESC>i
-
-:inoremap ] <c-r>=ClosePair(']')<CR>
-
-:inoremap " ""<ESC>i
-
-:inoremap ' ''<ESC>i
+":inoremap ( ()<ESC>i
+"
+":inoremap ) <c-r>=ClosePair(')')<CR>
+"
+":inoremap { {<CR>}<ESC>O
+"
+":inoremap } <c-r>=ClosePair('}')<CR>
+"
+":inoremap [ []<ESC>i
+"
+":inoremap ] <c-r>=ClosePair(']')<CR>
+"
+":inoremap " ""<ESC>i
+"
+":inoremap ' ''<ESC>i
 
 function! ClosePair(char)
 
@@ -657,11 +657,11 @@ map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+map <Leader>k <Plug>(easymotion-bd-jk)
+nmap <Leader>K <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
@@ -670,5 +670,14 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>l <Plug>(easymotion-lineforward)
 
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map <leader>. <Plug>(easymotion-repeat)
+
+
+" qicukfix的设置
+" https://blog.easwy.com/archives/advanced-vim-skills-quickfix-mode/
+
+autocmd FileType c,cpp  map <buffer> <leader><space>m :w<cr>:make<cr>
+nmap <leader>cn :cn<cr>
+nmap <leader>cp :cp<cr>
+nmap <leader>cw :cw 10<cr> 
+
