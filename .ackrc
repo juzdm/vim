@@ -1,0 +1,15 @@
+# 设置排序
+--sort-files
+#设置文件过滤
+--python
+--html
+--js
+--conf
+# 设置显示
+--noheading
+# 定义新的文件类型
+--type-set=conf=.conf
+# 智能识别大小写
+--smart-case
+# 设置以less形式展示，设定less参数
+--pager=less -R -M --shift 5 -i
