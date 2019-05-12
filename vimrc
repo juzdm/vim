@@ -1,5 +1,62 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-let mapleader="\<Space>"  
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'taglist.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'mileszs/ack.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'felixhummel/setcolors.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+let mapleader="\<Space>" 
+
+nmap <F3> :cp<cr>
+nmap <F4> :cn<cr>
+nmap <F2> :cw 10<cr> 
 
 " ================================================================
 
@@ -185,23 +242,23 @@ vmap <C-c> "+y
 
 "去空行  
 
-nnoremap <F2> :g/^\s*$/d<CR> 
+" nnoremap <F2> :g/^\s*$/d<CR> 
 
 "比较文件  
 
-nnoremap <C-F2> :vert diffsplit 
+" nnoremap <C-F2> :vert diffsplit 
 
 "新建标签  
 
-map <M-F2> :tabnew<CR>  
+" map <M-F2> :tabnew<CR>  
 
 "列出当前目录文件  
 
-map <F3> :tabnew .<CR>  
+" map <F3> :tabnew .<CR>  
 
 "打开树状文件目录  
 
-map <C-F3> \be  
+" map <C-F3> \be  
 
 "C，C++ 按F5编译运行
 
@@ -303,13 +360,13 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:
 
 " 设置在状态行显示的信息
 
-set foldcolumn=0
+" set foldcolumn=0
 
-set foldmethod=indent 
+" set foldmethod=indent 
 
-set foldlevel=3 
+" set foldlevel=3 
 
-set foldenable              " 开始折叠
+" set foldenable              " 开始折叠
 
 " 不要使用vi的键盘模式，而是vim自己的
 
@@ -556,7 +613,8 @@ set tags=tags
 "默认打开Taglist 
 
 let Tlist_Auto_Open=1 
-
+" map <silent> <leader>tl :TlistToggle<cr> 
+map <F8> :TlistToggle<cr> 
 """""""""""""""""""""""""""""" 
 
 " Tag list (ctags) 
@@ -677,7 +735,23 @@ map <leader>. <Plug>(easymotion-repeat)
 " https://blog.easwy.com/archives/advanced-vim-skills-quickfix-mode/
 
 autocmd FileType c,cpp  map <buffer> <leader><space>m :w<cr>:make<cr>
-nmap <leader>cn :cn<cr>
-nmap <leader>cp :cp<cr>
-nmap <leader>cw :cw 10<cr> 
+nmap <F3> :cn<cr>
+nmap <F4> :cp<cr>
+nmap <F2> :cw 10<cr> 
+
+" 支持鼠标
+:set mouse=a
+:set mouse+=v
+
+" if executable('ack')
+	  " let g:ackprg = 'ack -s --nogroup --column --nopager --nocolor'
+ "  	  let g:ackprg = 'ack -s --nogroup  --nopager --nocolor' 
+" endif
+
+" air line 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+nnoremap <leader>n :bp<CR>
+nnoremap <leader>b :bn<CR>
+
 
